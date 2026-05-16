@@ -1,0 +1,8 @@
+// EngineerJobsApplication.java
+@SpringBootApplication
+@EnableJpaRepositories
+public class EngineerJobsApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(EngineerJobsApplication.class, args);
+    }
+}
