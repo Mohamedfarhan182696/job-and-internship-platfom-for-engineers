@@ -1,0 +1,21 @@
+@Service
+public class AiRecommendationService {
+
+    private final ChatClient chatClient; // Spring AI
+
+    public AiRecommendationService(ChatClient.Builder builder) {
+        this.chatClient = builder.build();
+    }
+
+    public double calculateMatchScore(UserProfile profile, Job job) {
+        String prompt = String.format(
+            "Match candidate skills %s to job requirements %s. Return only a score 0-100.",
+            profile.getSkills(), job.getSkillsRequired()
+        );
+        // Call LLM and parse
+        String response = chatClient.prompt(prompt).call().content();
+        return Double.parseDouble(response.trim());
+    }
+
+    // Resume parsing with Tika + LLM summarization
+}
