@@ -1,0 +1,29 @@
+// User.java
+@Entity
+@Table(name = "users")
+public class User {
+    @Id @GeneratedValue
+    private Long id;
+    private String email;
+    private String password;
+    private String name;
+    private String role; // SEEKER, RECRUITER, ADMIN
+    private String district; // Tamil Nadu districts
+    private String engineeringBranch; // CSE, Mech, etc.
+    // getters setters + @ManyToOne relationships
+}
+
+// Job.java
+@Entity
+public class Job {
+    @Id @GeneratedValue
+    private Long id;
+    private String title;
+    private String company;
+    private String description;
+    private String skillsRequired; // comma separated or JSON
+    private String location; // District
+    private String type; // JOB / INTERNSHIP
+    private boolean approvedByAdmin = false;
+    // timestamps, salary, etc.
+}
